@@ -202,21 +202,77 @@ same process for the remaining plain text characters.
 ### PROGRAM :
 
 ```
-from cryptography.fernet import Fernet
-message = input()
-key = Fernet.generate_key()
-fernet = Fernet(key)
-encMessage = fernet.encrypt(message.encode())
-print("original string: ", message)
-print("encrypted string: ", encMessage)
-
-decMessage = fernet.decrypt(encMessage).decode()
- 
-print("decrypted string: ", decMessage)
+import java.security.SecureRandom;
+import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
+import java.util.Random;
+import java.util.Scanner;
+public class DES {
+byte[] skey = new byte[1000];
+static byte[] raw;
+String inputMessage, encryptedData, decryptedMessage;
+public DES() {
+try {
+generateSymmetricKey();
+Scanner scanner = new Scanner(System.in);
+System.out.print("Enter your plaintext: ");
+String inputMessage = scanner.nextLine();
+byte[] ibyte = inputMessage.getBytes();
+byte[] ebyte = encrypt(raw, ibyte);
+encryptedData = new String(ebyte);
+System.out.println("Encrypted message: " + encryptedData);
+byte[] dbyte = decrypt(raw, ebyte);
+decryptedMessage = new String(dbyte);
+System.out.println("Decrypted message: " + decryptedMessage);
+} catch (Exception e) {
+System.out.println(e);
+}
+}
+void generateSymmetricKey() {
+try {
+Random r = new Random();
+int num = r.nextInt(10000);
+String knum = String.valueOf(num);
+byte[] knumb = knum.getBytes();
+skey = getRawKey(knumb);
+System.out.println("DES Symmetric key = " + knum);
+} catch (Exception e) {
+System.out.println(e);
+}
+}
+private static byte[] getRawKey(byte[] seed) throws Exception {
+KeyGenerator kgen = KeyGenerator.getInstance("DES");
+SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
+sr.setSeed(seed);
+kgen.init(56, sr);
+SecretKey skey = kgen.generateKey();
+raw = skey.getEncoded();
+return raw;
+}
+private static byte[] encrypt(byte[] raw, byte[] clear) throws Exception {
+SecretKeySpec skeySpec = new SecretKeySpec(raw, "DES");
+Cipher cipher = Cipher.getInstance("DES");
+cipher.init(Cipher.ENCRYPT_MODE, skeySpec);
+byte[] encrypted = cipher.doFinal(clear);
+return encrypted;
+}
+private static byte[] decrypt(byte[] raw, byte[] encrypted) throws Exception {
+SecretKeySpec skeySpec = new SecretKeySpec(raw, "DES");
+Cipher cipher = Cipher.getInstance("DES");
+cipher.init(Cipher.DECRYPT_MODE, skeySpec);
+byte[] decrypted = cipher.doFinal(encrypted);
+return decrypted;
+}
+public static void main(String args[]) {
+DES des = new DES();
+}
+}
 ```
 ## OUTPUT:
 
-<img width="756" alt="image" src="https://github.com/AlluguriSrikrishnateja/19CS412---CRYPTOGRAPHY---ADVANCED-ENCRYPTION/assets/118343892/23e74c08-7cea-4381-b9fe-97e247b17470">
+![Screenshot_20240305_022252](https://github.com/aryabaisakhiya/19CS412---CRYPTOGRAPHY---ADVANCED-ENCRYPTION/assets/119393645/ed2f9e60-3b1d-472f-b2d6-2808d99f6a36)
 
 ## RESULT:
 
