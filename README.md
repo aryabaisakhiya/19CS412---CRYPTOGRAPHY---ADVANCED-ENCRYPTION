@@ -84,7 +84,8 @@ return 0;
 }
 ```
 ## OUTPUT:
-![Screenshot 2024-03-05 113517](https://github.com/AlluguriSrikrishnateja/19CS412---CRYPTOGRAPHY---ADVANCED-ENCRYPTION/assets/118343892/b96f8704-db74-4fb0-835d-078d58644625)
+![image](https://github.com/aryabaisakhiya/19CS412---CRYPTOGRAPHY---ADVANCED-ENCRYPTION/assets/119393645/521b676f-60cc-45cf-8d6c-deddbdd8660e)
+
 
 
 ## RESULT :
