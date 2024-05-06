@@ -102,6 +102,7 @@ application like URL Encryption.
 3. It has a fixed block size of 128 bits, and a key size of 128, 192, or 256 bits.
 4. AES operates on a 4 × 4 column-major order array of bytes, termed the state
 ## PROGRAM:
+```
 ## AES.java
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -161,14 +162,18 @@ Base64.getEncoder().encodeToString(cipher.doFinal(strToEncrypt.getBytes("UTF-8")
  System.out.println("Decrypted URL : " + decryptedString);
  }
 }
-   ## OUTPUT:
+```
+ ## OUTPUT:
+ 
 URL Encryption Using AES Algorithm
 -------------------------------------------------
 Original URL : www.annauniv.edu
 Encrypted URL : vibpFJW6Cvs5Y+L7t4N6YWWe07+JzS1d3CU2h3mEvEg=
 Decrypted URL : www.annauniv.edu
 
+
 ## RESULT:
+The AES algorithm is implemented successfully.
 
 
 
